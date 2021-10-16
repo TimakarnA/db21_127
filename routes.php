@@ -13,20 +13,20 @@ function call($controller ,$action){
     {
         case "pages" : $controller = new PagesController() ; break ;
 
-        case "fieldhospital" :  require_once("./models/fieldhospital.php"); 
-                            //require_once("./models/staff.php"); 
+        case "fieldhospital" :  require_once("./model/fieldhospital.php"); 
+                                require_once("./model/agency.php"); 
                             //require_once("./models/customer.php"); 
                             //require_once("./models/paymenttype.php");
         $controller = new FieldhospitalController(); break ;
 
         
-        case "patient" : require_once("./models/patient.php") ; 
-                                 //require_once("./models/quotation.php"); 
+        case "patient" : require_once("./model/patient.php") ; 
+                                 //require_once("./model/quotation.php"); 
                                  //require_once("./models/product.php"); 
                                  //require_once("./models/productcolor.php"); 
         $controller = new PatientController(); break ;
 
-        case "telemedicine" : require_once("./models/telemedicine.php"); 
+        case "telemedicine" : require_once("./model/telemedicine.php"); 
                               //require_once("./models/product.php"); 
         $controller = new TelemedicineController(); break ;
     }
