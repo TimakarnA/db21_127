@@ -5,19 +5,19 @@
         $this->AName = $AName;
     }
     public static function getAll(){
-        $AgencyList=[];
+        $agency_list=[];
         require("connection_connect.php");
         $sql ="SELECT * FROM agency" ;
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
-            $AID = $my_row[ID];
-            $AName = $my_row[Name];
-            $AgencyList[]= new Agency($AID,$AName);
+            $AID = $my_row[id];
+            $AName = $my_row[name];
+            $agency_list[]= new Agency($AID,$AName);
         }
     
         require("connection_close.php");
-        return $AgencyList ;
+        return $agency_list ;
     }
 }
 ?>
