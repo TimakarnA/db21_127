@@ -43,56 +43,58 @@ class field_hospital{
         require("connection_close.php");
         return $fieldhospital_list ;
     }
-   /*public static function get($PriceDetailID)
+   public static function get($FHID)
     {
         //echo"iiiiii";
         require("connection_connect.php");
-        $sql = "SELECT Price_detail.PriceDetailID,Product.PRID,Product.Name,Price_detail.จำนวนเริ่มต้น,Price_detail.จำนวนสุดท้าย,Price_detail.price,Price_detail.สกรีนเพิ่มสีละ 
-        FROM Price_detail NATURAL JOIN Product WHERE PriceDetailID = '$PriceDetailID'";
+        $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as AID
+        FROM field_hospital INNER JOIN agency ON agency.id=field_hospital.AID" ;
         $result=$conn->query($sql);
         $my_row=$result->fetch_assoc();
-        $PriceDetailID = $my_row[PriceDetailID];
-        $PRID = $my_row[PRID];
-        $Name = $my_row[Name];
-        $จำนวนเริ่มต้น =$my_row[จำนวนเริ่มต้น];
-        $จำนวนสุดท้าย = $my_row[จำนวนสุดท้าย];
-        $price =$my_row[price];
-        $สกรีนเพิ่มสีละ = $my_row[สกรีนเพิ่มสีละ];
+        $FHID = $my_row[FHID];
+        $FHName = $my_row[FHName];
+        $FHdate = $my_row[FHdate];
+        $greenbed =$my_row[greenbed];
+        $yellowbed = $my_row[yellowbed];
+        $redbed =$my_row[redbed];
+        $AID = $my_row[AID];
         require("connection_close.php");
-        return new price_detail($PriceDetailID,$PRID,$Name,$จำนวนเริ่มต้น,$จำนวนสุดท้าย,$price,$สกรีนเพิ่มสีละ);
-    }
-    public static function Add($PriceDetailID,$PRID,$จำนวนเริ่มต้น,$จำนวนสุดท้าย,$price,$สกรีนเพิ่มสีละ)
-    {
-        //echo "00000";
-        require("connection_connect.php");
-        $sql ="INSERT INTO Price_detail (PriceDetailID,PRID,จำนวนเริ่มต้น,จำนวนสุดท้าย,price,สกรีนเพิ่มสีละ) VALUES ('$PriceDetailID','$PRID','$จำนวนเริ่มต้น','$จำนวนสุดท้าย','$price','$สกรีนเพิ่มสีละ')";
-        $result=$conn->query($sql);
-        require("connection_close.php");
-        return "Add success $result rows";
+        return new field_hospital($FHID,$FHName,$FHdate,$greenbed,$yellowbed,$redbed,$AID);
     }
     public static function search($key)
     {
         require("connection_connect.php");
-        $sql ="SELECT Price_detail.PriceDetailID,Product.PRID,Product.Name,Price_detail.จำนวนเริ่มต้น,Price_detail.จำนวนสุดท้าย,Price_detail.price,Price_detail.สกรีนเพิ่มสีละ FROM Price_detail NATURAL JOIN Product
-        Where (Price_detail.PriceDetailID LIKE '%$key%' OR Price_detail.PRID LIKE '%$key%' OR Product.Name LIKE '%$key%' OR Price_detail.จำนวนเริ่มต้น LIKE '%$key%' OR 
-        Price_detail.จำนวนสุดท้าย LIKE '%$key%' OR Price_detail.price LIKE '%$key%' OR Price_detail.สกรีนเพิ่มสีละ LIKE '%$key%')" ;
+        $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as AID
+        FROM field_hospital INNER JOIN agency ON agency.id=field_hospital.AID
+        Where (field_hospital.FHID LIKE '%$key%' OR field_hospital.FHName LIKE '%$key%' OR field_hospital.FHdate LIKE '%$key%' OR field_hospital.greenbed LIKE '%$key%' OR 
+        field_hospital.yellowbed LIKE '%$key%' OR field_hospital.redbed LIKE '%$key%' OR agency.name LIKE '%$key%')" ;
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
-            $PriceDetailID = $my_row[PriceDetailID];
-            $PRID = $my_row[PRID];
-            $Name = $my_row[Name];
-            $จำนวนเริ่มต้น =$my_row[จำนวนเริ่มต้น];
-            $จำนวนสุดท้าย = $my_row[จำนวนสุดท้าย];
-            $price =$my_row[price];
-            $สกรีนเพิ่มสีละ = $my_row[สกรีนเพิ่มสีละ];
-            $pricedetailList[]= new price_detail($PriceDetailID,$PRID,$Name,$จำนวนเริ่มต้น,$จำนวนสุดท้าย,$price,$สกรีนเพิ่มสีละ);
+            $FHID = $my_row[FHID];
+            $FHName = $my_row[FHName];
+            $FHdate = $my_row[FHdate];
+            $greenbed =$my_row[greenbed];
+            $yellowbed = $my_row[yellowbed];
+            $redbed =$my_row[redbed];
+            $AID = $my_row[AID];
+            $fieldhospital_list[]= new field_hospital($FHID,$FHName,$FHdate,$greenbed,$yellowbed,$redbed,$AID);
         }
 
         require("connection_close.php");
-        return $pricedetailList ;
+        return $fieldhospital_list ;
     }
-    public static function update($PriceDetailID,$PRID,$จำนวนเริ่มต้น,$จำนวนสุดท้าย,$price,$สกรีนเพิ่มสีละ,$NEWID)
+    public static function Add($FHID,$FHName,$FHdate,$greenbed,$yellowbed,$redbed,$AID)
+    {
+        //echo "00000";
+        require("connection_connect.php");
+        $sql ="INSERT INTO field_hospital (FHID,FHName,FHdate,greenbed,yellowbed,redbed,AID) VALUES ('$FHID','$FHName','$FHdate','$greenbed','$yellowbed','$redbed','$AID')";
+        $result=$conn->query($sql);
+        require("connection_close.php");
+        return "Add success $result rows";
+    }
+    
+    /*public static function update($PriceDetailID,$PRID,$จำนวนเริ่มต้น,$จำนวนสุดท้าย,$price,$สกรีนเพิ่มสีละ,$NEWID)
     {
         //echo "00000";
         require("connection_connect.php");
