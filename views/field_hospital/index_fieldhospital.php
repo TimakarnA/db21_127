@@ -1,4 +1,12 @@
 <table border = 1>
+    <br>
+    new field_hospital <a href="?controller=fieldhospital&action=newFieldhospital">click</a><br>
+    <form method="get" action="">
+        <input type="text" name="key">
+        <input type="hidden" name="controller" value="fieldhospital"/>
+        <button type="submit" name="action" value="search">Search</button>
+    </form>
+    <br>
     <tr>
         <td>ID</td>
         <td>ชื่อโรงพยาบาลสนาม</td>
@@ -10,6 +18,7 @@
         <td>update</td>
         <td>delete</td>
     </tr>
+    <br>
  <?php foreach($fieldhospital_list as $field_hospital)
  {
      echo "<tr><td>$field_hospital->FHID</td>
