@@ -9,7 +9,8 @@
     <br>
     <tr>
         <td>ID</td>
-        <td>ชื่อโรงพยาบาลสนาม</td>
+        <td>โรงพยาบาลสนาม</td>
+        <td>address</td>
         <td>วันที่เปิดรับ</td>
         <td>จำนวนเตียงสีเขียว</td>
         <td>จำนวนเตียงสีเหลือง</td>
@@ -23,6 +24,7 @@
  {
      echo "<tr><td>$field_hospital->FHID</td>
      <td>$field_hospital->FHName</td>
+     <td>$field_hospital->FHaddress</td>
      <td>$field_hospital->FHdate</td>
      <td>$field_hospital->greenbed</td>
      <td>$field_hospital->yellowbed</td>
