@@ -16,12 +16,13 @@
        //echo "000000";
        $FHID = $_GET['FHID'];
        $FHName = $_GET['FHName'];
+       $FHaddress = $_GET['FHaddress'];
        $FHdate = $_GET['FHdate'];
        $greenbed = $_GET['greenbed'];
        $yellowbed = $_GET['yellowbed'];
        $redbed = $_GET['redbed'];
        $AID = $_GET['AID'];
-       field_hospital::Add($FHID,$FHName,$FHdate,$greenbed,$yellowbed,$redbed,$AID);
+       field_hospital::Add($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID);
        
        FieldhospitalController::index();
     }
