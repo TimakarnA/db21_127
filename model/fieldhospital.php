@@ -99,19 +99,19 @@ class field_hospital{
         return "Add success $result rows";
     }
     
-    /*public static function update($PriceDetailID,$PRID,$จำนวนเริ่มต้น,$จำนวนสุดท้าย,$price,$สกรีนเพิ่มสีละ,$NEWID)
+    public static function update($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID,$NEWID)
     {
         //echo "00000";
         require("connection_connect.php");
-        $sql ="UPDATE `Price_detail` SET `PriceDetailID`='$PriceDetailID',`PRID`='$PRID',
-        `จำนวนเริ่มต้น`=$จำนวนเริ่มต้น,`จำนวนสุดท้าย`=$จำนวนสุดท้าย,`price`=$price,`สกรีนเพิ่มสีละ`=$สกรีนเพิ่มสีละ 
-        WHERE `PriceDetailID` = '$NEWID'";
+        $sql ="UPDATE field_hospital
+        SET FHID='$FHID',FHName='$FHName',FHaddress='$FHaddress',FHdate='$FHdate',greenbed='$greenbed',yellowbed='$yellowbed',redbed='$redbed',AID='$AID'
+        WHERE FHID = '$NEWID'";
         $result=$conn->query($sql);
         require("connection_close.php");
         return "update success $result row";
     }
 
-    public static function delete($PriceDetailID)
+    /*public static function delete($PriceDetailID)
     {
         //echo "00000";
         require("connection_connect.php");
