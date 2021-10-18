@@ -15,8 +15,6 @@ function call($controller ,$action){
 
         case "fieldhospital" :  require_once("./model/fieldhospital.php"); 
                                 require_once("./model/agency.php"); 
-                            //require_once("./models/customer.php"); 
-                            //require_once("./models/paymenttype.php");
         $controller = new FieldhospitalController(); break ;
 
         
