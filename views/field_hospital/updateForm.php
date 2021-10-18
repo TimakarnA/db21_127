@@ -1,4 +1,5 @@
 <form method="get" action="">
+        <br>
     <label>ID <input type="text" name="FHID"
             value="<?php echo $field_hospital->FHID; ?>" /> </label><br>
     <label>ชื่อโรงพยาบาลสนาม <input type="text" name="FHName"
@@ -21,6 +22,7 @@
                 echo ">$agency->AName</option>";
             }?>
         </select></label><br>  
+        <br>
 
     <input type="hidden" name="controller" value="fieldhospital"/>
     <input type="hidden" name="ID" value="<?php echo $field_hospital->FHID;?>" />
