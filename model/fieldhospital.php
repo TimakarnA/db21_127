@@ -48,10 +48,10 @@ class field_hospital{
     }
    public static function get($FHID)
     {
-        //echo"iiiiii";
+        //echo $AID;
         require("connection_connect.php");
         $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHaddress,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as AID
-        FROM field_hospital INNER JOIN agency ON agency.id=field_hospital.AID" ;
+        FROM field_hospital INNER JOIN agency ON agency.id=field_hospital.AID WHERE FHID = '$FHID' " ;
         $result=$conn->query($sql);
         $my_row=$result->fetch_assoc();
         $FHID = $my_row[FHID];
@@ -62,6 +62,7 @@ class field_hospital{
         $yellowbed = $my_row[yellowbed];
         $redbed =$my_row[redbed];
         $AID = $my_row[AID];
+        //echo $AID;
         require("connection_close.php");
         return new field_hospital($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID);
     }
