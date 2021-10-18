@@ -32,4 +32,25 @@
         $fieldhospital_list = field_hospital::search($key);
         require_once("./views/field_hospital/index_fieldhospital.php");
     }
+    public function updateForm(){
+        //echo $FHID;
+        $FHID = $_GET['FHID'];
+        $field_hospital = field_hospital::get($FHID);
+        $agency_list = Agency::getAll();
+        require_once("./views/field_hospital/updateForm.php");
+    }
+    public function update()
+    {
+       $FHID = $_GET['FHID'];
+       $NEWID = $_GET['ID'];
+       $FHName = $_GET['FHName'];
+       $FHaddress = $_GET['FHaddress'];
+       $FHdate = $_GET['FHdate'];
+       $greenbed = $_GET['greenbed'];
+       $yellowbed = $_GET['yellowbed'];
+       $redbed = $_GET['redbed'];
+       $AID = $_GET['AID'];
+       field_hospital::update($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID,$NEWID);
+       FieldhospitalController::index();
+    }
 }?>
