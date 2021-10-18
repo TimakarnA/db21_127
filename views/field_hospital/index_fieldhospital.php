@@ -8,16 +8,16 @@
     </form>
     <br>
     <tr>
-        <td>ID</td>
-        <td>โรงพยาบาลสนาม</td>
-        <td>address</td>
-        <td>วันที่เปิดรับ</td>
-        <td>จำนวนเตียงสีเขียว</td>
-        <td>จำนวนเตียงสีเหลือง</td>
-        <td>จำนวนเตียงสีแดง</td>
-        <td>หน่วยงาน</td>
-        <td>update</td>
-        <td>delete</td>
+        <td><b>ID</b></td>
+        <td><b>โรงพยาบาลสนาม</b></td>
+        <td><b>address</b></td>
+        <td><b>วันที่เปิดรับ</b></td>
+        <td><b>จำนวนเตียงสีเขียว</b></td>
+        <td><b>จำนวนเตียงสีเหลือง</b></td>
+        <td><b>จำนวนเตียงสีแดง</b></td>
+        <td><b>หน่วยงาน</b></td>
+        <td><b>update</b></td>
+        <td><b>delete</b></td>
     </tr>
     <br>
  <?php foreach($fieldhospital_list as $field_hospital)
