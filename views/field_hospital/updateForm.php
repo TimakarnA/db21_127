@@ -1,4 +1,3 @@
-<?php echo $FHID ?>
 <form method="get" action="">
     <label>ID <input type="text" name="FHID"
             value="<?php echo $field_hospital->FHID; ?>" /> </label><br>
@@ -18,7 +17,7 @@
     <label>หน่วยงาน <select name="AID">
         <?php foreach($agency_list as $agency)
             {echo "<option value= $agency->AID";
-                if($agency->AID==$field_hospital->AID){echo " selected='selected'";}
+                if($agency->AName=$field_hospital->AID){echo " selected='selected'";}
                 echo ">$agency->AName</option>";
             }?>
         </select></label><br>  
