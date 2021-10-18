@@ -30,7 +30,7 @@
      <td>$field_hospital->yellowbed</td>
      <td>$field_hospital->redbed</td>
      <td>$field_hospital->AID</td>
-     <td>update</td>
+     <td><a href=?controller=fieldhospital&action=updateForm&FHID=$field_hospital->FHID>update</a></td>
      <td>delete</td> </tr> ";
  }
  echo "</table>";
