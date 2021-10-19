@@ -8,7 +8,7 @@
     }
     public function newFieldhospital()
     {
-        $agency_list = Agency::getAll();
+        $agency_list = agency::getAll();
         require_once("./views/field_hospital/newFieldhospital.php");
     }
     public function addFieldhospital()
@@ -21,8 +21,8 @@
        $greenbed = $_GET['greenbed'];
        $yellowbed = $_GET['yellowbed'];
        $redbed = $_GET['redbed'];
-       $AID = $_GET['AID'];
-       field_hospital::Add($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID);
+       $Agency = $_GET['Agency'];
+       field_hospital::Add($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency);
        
        FieldhospitalController::index();
     }
@@ -36,7 +36,7 @@
         //echo $FHID;
         $FHID = $_GET['FHID'];
         $field_hospital = field_hospital::get($FHID);
-        $agency_list = Agency::getAll();
+        $agency_list = agency::getAll();
         require_once("./views/field_hospital/updateForm.php");
     }
     public function update()
@@ -49,8 +49,21 @@
        $greenbed = $_GET['greenbed'];
        $yellowbed = $_GET['yellowbed'];
        $redbed = $_GET['redbed'];
-       $AID = $_GET['AID'];
-       field_hospital::update($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID,$NEWID);
+       $Agency = $_GET['Agency'];
+       field_hospital::update($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency,$NEWID);
+       FieldhospitalController::index();
+    }
+    public function deleteConfirm(){
+        //echo " tttttt ";
+        $FHID = $_GET['FHID'];
+        $field_hospital = field_hospital::get($FHID);
+        require_once("./views/field_hospital/deleteConfirm.php");
+    }
+    public function delete()
+    {
+       //echo "000000";
+       $FHID = $_GET['FHID'];
+       field_hospital::delete($FHID);
        FieldhospitalController::index();
     }
 }?>
