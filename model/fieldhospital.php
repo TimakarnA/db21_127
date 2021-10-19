@@ -7,9 +7,9 @@ class field_hospital{
     public $greenbed;
     public $yellowbed;
     public $redbed;
-    public $AID;
+    public $Agency;
 
-    public function __construct($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID)
+    public function __construct($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency)
     {
         $this->FHID = $FHID;
         $this->FHName = $FHName;
@@ -18,14 +18,14 @@ class field_hospital{
         $this->greenbed = $greenbed;
         $this->yellowbed = $yellowbed;
         $this->redbed = $redbed;
-        $this->AID = $AID;
+        $this->Agency = $Agency;
     }
 
     public static function getAll(){
         //echo "55555";
         $fieldhospital_list=[];
         require("connection_connect.php");
-        $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHaddress,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as AID
+        $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHaddress,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as Agency
         FROM field_hospital INNER JOIN agency ON agency.id=field_hospital.AID" ;
         //$sql="SELECT * from field_hospital";
         $result=$conn->query($sql);
@@ -39,8 +39,8 @@ class field_hospital{
             $greenbed =$my_row[greenbed];
             $yellowbed = $my_row[yellowbed];
             $redbed =$my_row[redbed];
-            $AID = $my_row[AID];
-            $fieldhospital_list[]= new field_hospital($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID);
+            $Agency = $my_row[Agency];
+            $fieldhospital_list[]= new field_hospital($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency);
         }
 
         require("connection_close.php");
@@ -50,7 +50,7 @@ class field_hospital{
     {
         //echo $AID;
         require("connection_connect.php");
-        $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHaddress,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as AID
+        $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHaddress,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as Agency
         FROM field_hospital INNER JOIN agency ON agency.id=field_hospital.AID WHERE FHID = '$FHID' " ;
         $result=$conn->query($sql);
         $my_row=$result->fetch_assoc();
@@ -61,15 +61,15 @@ class field_hospital{
         $greenbed =$my_row[greenbed];
         $yellowbed = $my_row[yellowbed];
         $redbed =$my_row[redbed];
-        $AID = $my_row[AID];
+        $Agency = $my_row[Agency];
         //echo $AID;
         require("connection_close.php");
-        return new field_hospital($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID);
+        return new field_hospital($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency);
     }
     public static function search($key)
     {
         require("connection_connect.php");
-        $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHaddress,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as AID
+        $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHaddress,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as Agency
         FROM field_hospital INNER JOIN agency ON agency.id=field_hospital.AID
         Where (field_hospital.FHID LIKE '%$key%' OR field_hospital.FHName LIKE '%$key%' OR field_hospital.FHaddress LIKE '%$key%' OR field_hospital.FHdate LIKE '%$key%' OR field_hospital.greenbed LIKE '%$key%' OR 
         field_hospital.yellowbed LIKE '%$key%' OR field_hospital.redbed LIKE '%$key%' OR agency.name LIKE '%$key%')" ;
@@ -83,42 +83,41 @@ class field_hospital{
             $greenbed =$my_row[greenbed];
             $yellowbed = $my_row[yellowbed];
             $redbed =$my_row[redbed];
-            $AID = $my_row[AID];
-            $fieldhospital_list[]= new field_hospital($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID);
+            $Agency = $my_row[Agency];
+            $fieldhospital_list[]= new field_hospital($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency);
         }
 
         require("connection_close.php");
         return $fieldhospital_list ;
     }
-    public static function Add($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID)
+    public static function Add($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency)
     {
         //echo "00000";
         require("connection_connect.php");
-        $sql ="INSERT INTO field_hospital (FHID,FHName,FHaddress,FHdate,greenbed,yellowbed,redbed,AID) VALUES ('$FHID','$FHName','$FHaddress','$FHdate','$greenbed','$yellowbed','$redbed','$AID')";
+        $sql ="INSERT INTO field_hospital (FHID,FHName,FHaddress,FHdate,greenbed,yellowbed,redbed,AID) VALUES ('$FHID','$FHName','$FHaddress','$FHdate','$greenbed','$yellowbed','$redbed','$Agency')";
         $result=$conn->query($sql);
         require("connection_close.php");
         return "Add success $result rows";
     }
     
-    public static function update($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$AID,$NEWID)
+    public static function update($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency,$NEWID)
     {
         //echo "00000";
         require("connection_connect.php");
         $sql ="UPDATE field_hospital
-        SET FHID='$FHID',FHName='$FHName',FHaddress='$FHaddress',FHdate='$FHdate',greenbed='$greenbed',yellowbed='$yellowbed',redbed='$redbed',AID='$AID'
+        SET FHID='$FHID',FHName='$FHName',FHaddress='$FHaddress',FHdate='$FHdate',greenbed='$greenbed',yellowbed='$yellowbed',redbed='$redbed',AID='$Agency'
         WHERE FHID = '$NEWID'";
         $result=$conn->query($sql);
         require("connection_close.php");
         return "update success $result row";
     }
-
-    /*public static function delete($PriceDetailID)
+    public static function delete($FHID)
     {
         //echo "00000";
         require("connection_connect.php");
-        $sql ="DELETE from Price_detail WHERE PriceDetailID='$PriceDetailID' ";
+        $sql ="DELETE from field_hospital WHERE FHID='$FHID' ";
         $result=$conn->query($sql);
         require("connection_close.php");
         return "delete success $result row";
-    }*/
+    }
 }?>
