@@ -20,6 +20,3 @@ if(isset($_GET['controller'])&&isset($_GET['action']))
     <?php require_once("./routes.php") ; ?>
 </body>
 </html>
-
-
-    
