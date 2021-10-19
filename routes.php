@@ -1,6 +1,6 @@
 <?php
 $controllers = array('pages'=>['home','error'],
-'fieldhospital' =>['index','newFieldhospital','addFieldhospital','search','updateForm','update'],
+'fieldhospital' =>['index','newFieldhospital','addFieldhospital','search','updateForm','update','deleteConfirm','delete'],
 'patient' =>['index'],
 'telemedicine' =>['index']) ; 
 
