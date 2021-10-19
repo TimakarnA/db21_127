@@ -1,4 +1,4 @@
-<?php class Agency{
+<?php class agency{
     public $AID,$AName;
     public function __construct($AID,$AName){
         $this->AID = $AID;
@@ -13,7 +13,7 @@
         {
             $AID = $my_row[id];
             $AName = $my_row[name];
-            $agency_list[]= new Agency($AID,$AName);
+            $agency_list[]= new agency($AID,$AName);
         }
     
         require("connection_close.php");
