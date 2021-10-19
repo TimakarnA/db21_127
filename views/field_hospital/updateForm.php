@@ -15,10 +15,10 @@
     <label>จำนวนเตียงสีแดง <input type="text" name="redbed" 
             value="<?php echo $field_hospital->redbed; ?>" /> </label><br>
     
-    <label>หน่วยงาน <select name="AID">
+    <label>หน่วยงาน <select name="Agency">
         <?php foreach($agency_list as $agency)
             {echo "<option value= $agency->AID";
-                if($agency->AName=$field_hospital->AID){echo " selected='selected'";}
+                if($agency->AName==$field_hospital->Agency){echo " selected='selected'";}
                 echo ">$agency->AName</option>";
             }?>
         </select></label><br>  
