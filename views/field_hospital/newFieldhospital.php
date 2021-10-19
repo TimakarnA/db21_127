@@ -7,7 +7,7 @@
     <label>จำนวนเตียงสีเขียว <input type="text" name="greenbed" /> </label><br>
     <label>จำนวนเตียงสีเหลือง <input type="text" name="yellowbed" /> </label><br>
     <label>จำนวนเตียงสีแดง <input type="text" name="redbed" /> </label><br>
-    <label>หน่วยงาน <select name="AID">
+    <label>หน่วยงาน <select name="Agency">
         <?php foreach($agency_list as $agency){echo "<option value= $agency->AID>$agency->AName</option>";}?></select></label><br>
     <br>
     <input type="hidden" name="controller" value="fieldhospital"/>
