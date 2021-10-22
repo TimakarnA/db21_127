@@ -19,8 +19,8 @@ function call($controller ,$action){
 
         
         case "patient" : require_once("./model/patient.php") ; 
-                                 //require_once("./model/quotation.php"); 
-                                 //require_once("./models/product.php"); 
+                         require_once("./model/color.php"); 
+                         require_once("./model/fieldhospital.php"); 
                                  //require_once("./models/productcolor.php"); 
         $controller = new PatientController(); break ;
 
