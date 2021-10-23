@@ -1,5 +1,7 @@
 <table border = 1>
     <br>
+    <br>
+    new patient <a href="?controller=patient&action=newPatient">click</a><br>
     <tr>
         <td><b>เลขประจำตัว</b></td>
         <td><b>ชื่อ</b></td>
