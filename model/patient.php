@@ -86,18 +86,18 @@ class patient{
 
         require("connection_close.php");
         return $fieldhospital_list ;
-    }
-    public static function Add($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency)
+    }*/
+    public static function Add($card_id,$name_P,$lastname_P,$color_name,$FHID,$datefh)
     {
-        //echo "00000";
         require("connection_connect.php");
-        $sql ="INSERT INTO field_hospital (FHID,FHName,FHaddress,FHdate,greenbed,yellowbed,redbed,AID) VALUES ('$FHID','$FHName','$FHaddress','$FHdate','$greenbed','$yellowbed','$redbed','$Agency')";
+        $sql ="INSERT INTO Patient(card_id,name_P,lastname_P,color_name,FHID,datefh) VALUES ('$card_id','$name_P','$lastname_P','$color_name','$FHID','$datefh')";
         $result=$conn->query($sql);
+        //echo $result;
         require("connection_close.php");
         return "Add success $result rows";
     }
     
-    public static function update($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency,$NEWID)
+    /*public static function update($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency,$NEWID)
     {
         //echo "00000";
         require("connection_connect.php");
