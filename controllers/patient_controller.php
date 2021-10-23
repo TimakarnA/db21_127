@@ -7,3 +7,4 @@
         require_once("./views/patient/index_patient.php");
     }
 }
+?>
