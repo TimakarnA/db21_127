@@ -24,5 +24,11 @@
        patient::Add($card_id,$name_P,$lastname_P,$color_name,$FHID,$datefh);
        PatientController::index();
     }
+    public function search()
+    {
+        $key = $_GET['key'];
+        $patient_list = patient::search($key);
+        require_once("./views/patient/index_patient.php");
+    }
 }
 ?>
