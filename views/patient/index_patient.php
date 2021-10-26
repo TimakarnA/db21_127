@@ -1,7 +1,12 @@
 <table border = 1>
     <br>
-    <br>
     new patient <a href="?controller=patient&action=newPatient">click</a><br>
+    <form method="get" action="">
+        <input type="text" name="key">
+        <input type="hidden" name="controller" value="patient"/>
+        <button type="submit" name="action" value="search">Search</button>
+    </form>
+    <br>
     <tr>
         <td><b>เลขประจำตัว</b></td>
         <td><b>ชื่อ</b></td>
