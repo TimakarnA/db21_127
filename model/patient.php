@@ -24,7 +24,7 @@ class patient{
         $patient_list=[];
         require("connection_connect.php");
         $sql ="SELECT Patient.card_id,Patient.name_P,Patient.lastname_P,Patient.color_name,field_hospital.FHName,Patient.datefh 
-        FROM Patient NATURAL JOIN field_hospital WHERE Patient.FHID=field_hospital.FHID" ;
+        FROM Patient NATURAL JOIN field_hospital" ;
         //$sql="SELECT * from field_hospital";
         $result=$conn->query($sql);
         //echo $result;
@@ -62,31 +62,30 @@ class patient{
         //echo $AID;
         require("connection_close.php");
         return new field_hospital($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency);
-    }
+    }*/
     public static function search($key)
     {
         require("connection_connect.php");
-        $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHaddress,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as Agency
-        FROM field_hospital INNER JOIN agency ON agency.id=field_hospital.AID
-        Where (field_hospital.FHID LIKE '%$key%' OR field_hospital.FHName LIKE '%$key%' OR field_hospital.FHaddress LIKE '%$key%' OR field_hospital.FHdate LIKE '%$key%' OR field_hospital.greenbed LIKE '%$key%' OR 
-        field_hospital.yellowbed LIKE '%$key%' OR field_hospital.redbed LIKE '%$key%' OR agency.name LIKE '%$key%')" ;
+        $sql ="SELECT Patient.card_id,Patient.name_P,Patient.lastname_P,Patient.color_name,field_hospital.FHName,Patient.datefh 
+        FROM Patient NATURAL JOIN field_hospital
+        Where (Patient.card_id LIKE '%$key%' OR Patient.name_P LIKE '%$key%' OR Patient.lastname_P LIKE '%$key%' OR Patient.color_name LIKE '%$key%' OR field_hospital.FHName LIKE '%$key%' OR 
+        Patient.datefh LIKE '%$key%')" ;
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
+            $card_id = $my_row[card_id];
+            $name_P = $my_row[name_P];
+            $lastname_P = $my_row[lastname_P];
+            $color_name = $my_row[color_name];
             $FHID = $my_row[FHID];
-            $FHName = $my_row[FHName];
-            $FHaddress = $my_row[FHaddress];
-            $FHdate = $my_row[FHdate];
-            $greenbed =$my_row[greenbed];
-            $yellowbed = $my_row[yellowbed];
-            $redbed =$my_row[redbed];
-            $Agency = $my_row[Agency];
-            $fieldhospital_list[]= new field_hospital($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency);
+            $fieldhospital=$my_row[FHName];
+            $datefh = $my_row[datefh];
+            $patient_list[]= new patient($card_id,$name_P,$lastname_P,$color_name,$FHID,$fieldhospital,$datefh);
         }
 
         require("connection_close.php");
-        return $fieldhospital_list ;
-    }*/
+        return $patient_list ;
+    }
     public static function Add($card_id,$name_P,$lastname_P,$color_name,$FHID,$datefh)
     {
         require("connection_connect.php");
