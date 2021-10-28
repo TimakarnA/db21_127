@@ -4,32 +4,68 @@
     {
         //echo "00000";
         $patientinfh_list = patientinfh::getAll();
-        echo "marklee";
+        //echo "marklee";
         require_once("./views/patientinfh/index_patientinfh.php");
     }
-    /*public function newPatient()
+    public function newPatientinfh()
     {
         $color_list = color::getAll();
         $fieldhospital_list = field_hospital::getAll();
-        require_once("./views/patient/newPatient.php");
+        $people_list = people::getAll();
+        $patient_list = patient::getAll();
+        require_once("./views/patientinfh/newPatientinfh.php");
     }
-    public function addPatient()
+    public function addPatientinfh()
     {
        //echo "000000";
-       $card_id = $_GET['card_id'];
-       $name_P = $_GET['name_P'];
-       $lastname_P = $_GET['lastname_P'];
-       $color_name = $_GET['color_name'];
+       $patient_id = $_GET['patient_id'];
+       //$id_card = $_GET['id_card'];
+       //$color_name = $_GET['color_name'];
        $FHID = $_GET['FHID'];
        $datefh = $_GET['datefh'];
-       patient::Add($card_id,$name_P,$lastname_P,$color_name,$FHID,$datefh);
-       PatientController::index();
+       patientinfh::Add($patient_id,$FHID,$datefh);
+       PatientinfhController::index();
     }
     public function search()
     {
         $key = $_GET['key'];
-        $patient_list = patient::search($key);
-        require_once("./views/patient/index_patient.php");
-    }*/
+        $patientinfh_list = patientinfh::search($key);
+        require_once("./views/patientinfh/index_patientinfh.php");
+    }
+    public function updateForm()
+    {
+        //echo $FHID;
+        $patient_id = $_GET['patient_id'];
+        $patientinfh = patientinfh::get($patient_id);
+        $color_list = color::getAll();
+        $fieldhospital_list = field_hospital::getAll();
+        $people_list = people::getAll();
+        $patient_list = patient::getAll();
+        require_once("./views/patientinfh/updateForm.php");
+    }
+    public function update()
+    {
+        $patient_id = $_GET['patient_id'];
+        $NEWID = $_GET['ID'];
+        $color_name = $_GET['color_name'];
+        $FHID = $_GET['FHID'];
+        $datefh = $_GET['datefh'];
+        patientinfh::update($patient_id,$color_name,$FHID,$datefh,$NEWID);
+        PatientinfhController::index();
+    }
+    public function deleteConfirm()
+    {
+        //echo " tttttt ";
+        $patient_id = $_GET['patient_id'];
+        $patientinfh = patientinfh::get($patient_id);
+        require_once("./views/patientinfh/deleteConfirm.php");
+    }
+    public function delete()
+    {
+       //echo "000000";
+       $patient_id = $_GET['patient_id'];
+        patientinfh::delete($patient_id);
+        PatientinfhController::index();
+    }
 }
 ?>
