@@ -1,7 +1,7 @@
 <?php
 $controllers = array('pages'=>['home','error'],
 'fieldhospital' =>['index','newFieldhospital','addFieldhospital','search','updateForm','update','deleteConfirm','delete'],
-'patient' =>['index','newPatient','addPatient','search'],
+'patientinfh' =>['index'],
 'telemedicine' =>['index']) ; 
 
  
@@ -18,11 +18,12 @@ function call($controller ,$action){
         $controller = new FieldhospitalController(); break ;
 
         
-        case "patient" : require_once("./model/patient.php") ; 
-                         require_once("./model/color.php"); 
+        case "patientinfh" : require_once("./model/patientinfh.php") ; 
+                         /*require_once("./model/color.php"); 
                          require_once("./model/fieldhospital.php"); 
-                                 //require_once("./models/productcolor.php"); 
-        $controller = new PatientController(); break ;
+                         require_once("./model/people.php"); 
+                         require_once("./model/patient.php"); */
+        $controller = new PatientinfhController(); break ;
 
         case "telemedicine" : require_once("./model/telemedicine.php"); 
                               //require_once("./models/product.php"); 
