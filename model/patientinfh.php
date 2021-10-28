@@ -22,7 +22,7 @@ class patientinfh{
     }
 
     public static function getAll(){
-        echo "55555";
+        //echo "55555";
         $patientinfh_list=[];
         require("connection_connect.php");
         $sql ="SELECT pfh.patient_id,pfh.NamePeople,pfh.LastnameP,pfh.color_name,field_hospital.FHName,pfh.datefh 
