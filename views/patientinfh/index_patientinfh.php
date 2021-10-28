@@ -1,12 +1,12 @@
 <table border = 1>
     <br>
-    <!--new patient <a href="?controller=patient&action=newPatient">click</a><br>
+    new patientinfh <a href="?controller=patientinfh&action=newPatientinfh">click</a><br>
     <form method="get" action="">
         <input type="text" name="key">
-        <input type="hidden" name="controller" value="patient"/>
+        <input type="hidden" name="controller" value="patientinfh"/>
         <button type="submit" name="action" value="search">Search</button>
     </form>
-    <br>-->
+    <br>
     <tr>
         <td><b>รหัสคนไข้</b></td>
         <td><b>ชื่อ</b></td>
@@ -26,8 +26,8 @@
      <td>$patientinfh->color_name</td>
      <td>$patientinfh->fieldhospital</td>
      <td>$patientinfh->datefh</td>
-     <td>update</td>
-     <td>delete</td> </tr> ";
+     <td><a href=?controller=patientinfh&action=updateForm&patient_id=$patientinfh->patient_id>update</a></td>
+     <td><a href=?controller=patientinfh&action=deleteConfirm&patient_id=$patientinfh->patient_id>delete</a></td> </tr> ";
  }
  echo "</table>";
  ?>
