@@ -2,8 +2,9 @@
 {
     public function index()
     {
-        echo "00000";
+        //echo "00000";
         $patientinfh_list = patientinfh::getAll();
+        echo "marklee";
         require_once("./views/patientinfh/index_patientinfh.php");
     }
     /*public function newPatient()
