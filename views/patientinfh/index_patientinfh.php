@@ -14,7 +14,7 @@
         <td><b>color</b></td>
         <td><b>โรงพยาบาลสนาม</b></td>
         <td><b>วันที่เข้า</b></td>
-        <td><b>update</b></td>
+        <!--<td><b>update</b></td>-->
         <td><b>delete</b></td>
     </tr>
     <br>
@@ -26,7 +26,6 @@
      <td>$patientinfh->color_name</td>
      <td>$patientinfh->fieldhospital</td>
      <td>$patientinfh->datefh</td>
-     <td><a href=?controller=patientinfh&action=updateForm&patient_id=$patientinfh->patient_id>update</a></td>
      <td><a href=?controller=patientinfh&action=deleteConfirm&patient_id=$patientinfh->patient_id>delete</a></td> </tr> ";
  }
  echo "</table>";
