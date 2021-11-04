@@ -32,27 +32,7 @@
         $patientinfh_list = patientinfh::search($key);
         require_once("./views/patientinfh/index_patientinfh.php");
     }
-    public function updateForm()
-    {
-        //echo $FHID;
-        $patient_id = $_GET['patient_id'];
-        $patientinfh = patientinfh::get($patient_id);
-        $color_list = color::getAll();
-        $fieldhospital_list = field_hospital::getAll();
-        $people_list = people::getAll();
-        $patient_list = patient::getAll();
-        require_once("./views/patientinfh/updateForm.php");
-    }
-    public function update()
-    {
-        $patient_id = $_GET['patient_id'];
-        $NEWID = $_GET['ID'];
-        $color_name = $_GET['color_name'];
-        $FHID = $_GET['FHID'];
-        $datefh = $_GET['datefh'];
-        patientinfh::update($patient_id,$color_name,$FHID,$datefh,$NEWID);
-        PatientinfhController::index();
-    }
+    
     public function deleteConfirm()
     {
         //echo " tttttt ";
