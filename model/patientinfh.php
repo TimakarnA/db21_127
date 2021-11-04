@@ -114,7 +114,7 @@ class patientinfh{
     }
     
    
-    public static function update($patient_id,$color_name,$FHID,$datefh,$NEWID)
+    /*public static function update($patient_id,$color_name,$FHID,$datefh,$NEWID)
     {
         //echo "00000";
         require("connection_connect.php");
@@ -124,7 +124,7 @@ class patientinfh{
         $result=$conn->query($sql);
         require("connection_close.php");
         return "update success $result row";
-    }
+    }*/
     public static function delete($patient_id)
     {
         //echo "00000";
