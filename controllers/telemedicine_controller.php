@@ -7,33 +7,33 @@
         //echo "marklee";
         require_once("./views/telemedicine/index_telemedicine.php");
     }
-    /*public function newPatientinfh()
+    public function newTelemedicine()
     {
-        $color_list = color::getAll();
-        $fieldhospital_list = field_hospital::getAll();
+        $patientinfh_list = patientinfh::getAll();
         $people_list = people::getAll();
-        $patient_list = patient::getAll();
-        require_once("./views/patientinfh/newPatientinfh.php");
+        require_once("./views/telemedicine/newTelemedicine.php");
     }
-    public function addPatientinfh()
+    public function addTelemedicine()
     {
        //echo "000000";
+       $teleID = $_GET['teleID'];
        $patient_id = $_GET['patient_id'];
        //$id_card = $_GET['id_card'];
        //$color_name = $_GET['color_name'];
-       $FHID = $_GET['FHID'];
-       $datefh = $_GET['datefh'];
-       patientinfh::Add($patient_id,$FHID,$datefh);
-       PatientinfhController::index();
+       $symptom = $_GET['symptom'];
+       $temperature = $_GET['temperature'];
+       $teledate = $_GET['teledate'];
+       telemedicine::Add($teleID,$patient_id,$symptom,$temperature,$teledate);
+       TelemedicineController::index();
     }
     public function search()
     {
         $key = $_GET['key'];
-        $patientinfh_list = patientinfh::search($key);
-        require_once("./views/patientinfh/index_patientinfh.php");
+        $telemedicine_list = telemedicine::search($key);
+        require_once("./views/telemedicine/index_telemedicine.php");
     }
     
-    public function deleteConfirm()
+    /*public function deleteConfirm()
     {
         //echo " tttttt ";
         $patient_id = $_GET['patient_id'];
