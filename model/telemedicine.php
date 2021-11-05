@@ -50,10 +50,11 @@ class telemedicine{
         require("connection_close.php");
         return $telemedicine_list ;
     }
-    /*public static function Add($patient_id,$FHID,$datefh)
+    public static function Add($teleID,$patient_id,$symptom,$temperature,$teledate)
     {
+        //echo $teleID;
         require("connection_connect.php");
-        $sql ="INSERT INTO Patientinfh(patient_id,FHID,datefh) VALUES ('$patient_id','$FHID','$datefh')";
+        $sql ="INSERT INTO telemedicine(teleID,patient_id,symptom,temperature,teledate) VALUES ('$teleID','$patient_id','$symptom','$temperature','$teledate')";
         $result=$conn->query($sql);
         //echo $result;
         require("connection_close.php");
@@ -62,32 +63,31 @@ class telemedicine{
     public static function search($key)
     {
         require("connection_connect.php");
-        $sql ="SELECT pfh.patient_id,pfh.NamePeople,pfh.LastnameP,pfh.color_name,field_hospital.FHName,pfh.datefh 
-        FROM(SELECT p.patient_id,p.NamePeople,p.LastnameP,p.color_name,Patientinfh.datefh,Patientinfh.FHID
-        FROM (SELECT Patient.patient_id,Patient.id_card,People.NamePeople,People.LastnameP,Patient.color_name 
-        FROM Patient NATURAL JOIN People) As p NATURAL JOIN Patientinfh) As pfh NATURAL JOIN field_hospital
-        Where (pfh.patient_id LIKE '%$key%' OR pfh.NamePeople LIKE '%$key%' OR pfh.LastnameP LIKE '%$key%' OR pfh.color_name LIKE '%$key%' OR field_hospital.FHName LIKE '%$key%' OR 
-        pfh.datefh LIKE '%$key%')" ;
+        $sql ="SELECT telemedicine.teleID,P.patient_id,P.NamePeople,P.LastnameP,telemedicine.symptom,telemedicine.temperature,telemedicine.teledate
+        FROM(SELECT patient_id,id_card,NamePeople,LastnameP FROM Patient NATURAL JOIN People WHERE type_P = 'field_hospital') As P NATURAL JOIN telemedicine
+        WHERE (telemedicine.teleID LIKE '%$key%' OR P.patient_id LIKE '%$key%' OR P.NamePeople LIKE '%$key%' OR P.LastnameP LIKE '%$key%' OR telemedicine.symptom LIKE '%$key%' OR telemedicine.temperature LIKE '%$key%' OR 
+        telemedicine.teledate LIKE '%$key%')" ;
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
+            $teleID = $my_row[teleID];
             $patient_id = $my_row[patient_id];
             //echo $patient_id;
             $id_card = $my_row[id_card];
             $NamePeople = $my_row[NamePeople];
             $LastnameP = $my_row[LastnameP];
-            $color_name = $my_row[color_name];
-            $FHID = $my_row[FHID];
-            $fieldhospital=$my_row[FHName];
-            $datefh = $my_row[datefh];
-            $patientinfh_list[]= new patientinfh($patient_id,$id_card,$NamePeople,$LastnameP,$color_name,$FHID,$fieldhospital,$datefh);
+            $symptom = $my_row[symptom];
+            $temperature = $my_row[temperature];
+            $teledate = $my_row[teledate];
+            $type_P = $my_row[type_P];
+            $telemedicine_list[]= new telemedicine($teleID,$patient_id,$id_card,$NamePeople,$LastnameP,$symptom,$temperature,$teledate,$type_P);
         }
 
         require("connection_close.php");
-        return $patientinfh_list ;
+        return $telemedicine_list ;
     }
     
-   public static function get($patient_id)
+   /*public static function get($patient_id)
     {
         //echo "5555555";
         echo $FHID ;
