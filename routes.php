@@ -2,7 +2,7 @@
 $controllers = array('pages'=>['home','error'],
 'fieldhospital' =>['index','newFieldhospital','addFieldhospital','search','updateForm','update','deleteConfirm','delete'],
 'patientinfh' =>['index','newPatientinfh','addPatientinfh','search','deleteConfirm','delete'],
-'telemedicine' =>['index']) ; 
+'telemedicine' =>['index','newTelemedicine','addTelemedicine','search']) ; 
 
  
 
@@ -26,7 +26,9 @@ function call($controller ,$action){
         $controller = new PatientinfhController(); break ;
 
         case "telemedicine" : require_once("./model/telemedicine.php"); 
-                              //require_once("./models/product.php"); 
+                              require_once("./model/people.php"); 
+                              require_once("./model/patient.php");
+                              require_once("./model/patientinfh.php") ;
         $controller = new TelemedicineController(); break ;
     }
 $controller->{$action}(); 
