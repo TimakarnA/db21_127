@@ -1,12 +1,12 @@
 <table border = 1>
     <br>
-    <!--new patientinfh <a href="?controller=patientinfh&action=newPatientinfh">click</a><br>
+    new telemedicine <a href="?controller=telemedicine&action=newTelemedicine">click</a><br>
     <form method="get" action="">
         <input type="text" name="key">
-        <input type="hidden" name="controller" value="patientinfh"/>
+        <input type="hidden" name="controller" value="telemedicine"/>
         <button type="submit" name="action" value="search">Search</button>
     </form>
-    <br>-->
+    <br>
     <tr>
         <td><b>No.</b></td>
         <td><b>รหัสคนไข้</b></td>
