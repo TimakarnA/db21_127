@@ -15,8 +15,9 @@
         <td><b>อาการ</b></td>
         <td><b>อุณหภูมิ</b></td>
         <td><b>วันที่ตรวจ</b></td>
+        <td><b>ผู้ตรวจ</b></td>
         <td><b>update</b></td>
-        <td><b>delete</b></td>
+        <!--<td><b>delete</b></td>-->
     </tr>
     <br>
  <?php foreach($telemedicine_list as $telemedicine)
@@ -28,8 +29,8 @@
      <td>$telemedicine->symptom</td>
      <td>$telemedicine->temperature</td>
      <td>$telemedicine->teledate</td>
-     <td>update</td>
-     <td>delete</td></tr> ";
+     <td>$telemedicine->staffinfh</td>
+     <td><a href=?controller=telemedicine&action=updateForm&teleID=$telemedicine->teleID>update</a></td></tr> ";
  }
  echo "</table>";
  ?>
