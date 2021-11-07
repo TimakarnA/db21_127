@@ -6,6 +6,7 @@
     <label>อาการ <input type="text" name="symptom" /> </label><br>
     <label>อุณหภูมิ <input type="text" name="temperature" /> </label><br>
     <label>วันที่ตรวจ <input type="date" name="teledate" /> </label><br>
+    <label>ผู้ตรวจ <input type="text" name="staffinfh" /> </label><br>
     <br>
     <input type="hidden" name="controller" value="telemedicine"/>
     <button type="submit" name="action" value="index">Back</button>
