@@ -9,9 +9,9 @@ class telemedicine{
     public $temperature;
     public $teledate;
     public $staffinfh;
-    public $type_P;
+    //public $type_P;
 
-    public function __construct($teleID,$patient_id,$id_card,$NamePeople,$LastnameP,$symptom,$temperature,$teledate,$staffinfh,$type_P)
+    public function __construct($teleID,$patient_id,$id_card,$NamePeople,$LastnameP,$symptom,$temperature,$teledate,$staffinfh)
     {
         $this->teleID = $teleID;
         $this->patient_id = $patient_id;
@@ -22,7 +22,7 @@ class telemedicine{
         $this->temperature = $temperature;
         $this->teledate = $teledate;
         $this->staffinfh = $staffinfh;
-        $this->type_P = $type_P;
+        //$this->type_P = $type_P;
     }
 
     public static function getAll(){
@@ -47,8 +47,8 @@ class telemedicine{
             $temperature = $my_row[temperature];
             $teledate = $my_row[teledate];
             $staffinfh = $my_row[staffinfh];
-            $type_P = $my_row[type_P];
-            $telemedicine_list[]= new telemedicine($teleID,$patient_id,$id_card,$NamePeople,$LastnameP,$symptom,$temperature,$teledate,$staffinfh,$type_P);
+            //$type_P = $my_row[type_P];
+            $telemedicine_list[]= new telemedicine($teleID,$patient_id,$id_card,$NamePeople,$LastnameP,$symptom,$temperature,$teledate,$staffinfh);
         }
 
         require("connection_close.php");
@@ -83,8 +83,8 @@ class telemedicine{
             $temperature = $my_row[temperature];
             $teledate = $my_row[teledate];
             $staffinfh = $my_row[staffinfh];
-            $type_P = $my_row[type_P];
-            $telemedicine_list[]= new telemedicine($teleID,$patient_id,$id_card,$NamePeople,$LastnameP,$symptom,$temperature,$teledate,$staffinfh,$type_P);
+            //$type_P = $my_row[type_P];
+            $telemedicine_list[]= new telemedicine($teleID,$patient_id,$id_card,$NamePeople,$LastnameP,$symptom,$temperature,$teledate,$staffinfh);
         }
 
         require("connection_close.php");
@@ -112,10 +112,10 @@ class telemedicine{
         $temperature = $my_row[temperature];
         $teledate = $my_row[teledate];
         $staffinfh = $my_row[staffinfh];
-        $type_P = $my_row[type_P];
+        //$type_P = $my_row[type_P];
         
         require("connection_close.php");
-        return new telemedicine($teleID,$patient_id,$id_card,$NamePeople,$LastnameP,$symptom,$temperature,$teledate,$staffinfh,$type_P);
+        return new telemedicine($teleID,$patient_id,$id_card,$NamePeople,$LastnameP,$symptom,$temperature,$teledate,$staffinfh);
     }
     
    
