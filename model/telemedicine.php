@@ -94,7 +94,7 @@ class telemedicine{
   public static function get($teleID)
     {
         //echo "5555555";
-        echo $teleID ;
+        //echo $teleID ;
         require("connection_connect.php");
         $sql ="SELECT telemedicine.teleID,P.patient_id,P.NamePeople,P.LastnameP,telemedicine.symptom,telemedicine.temperature,telemedicine.teledate,telemedicine.staffinfh
         FROM(SELECT patient_id,id_card,NamePeople,LastnameP FROM Patient NATURAL JOIN People WHERE type_P = 'field_hospital') As P NATURAL JOIN telemedicine 
