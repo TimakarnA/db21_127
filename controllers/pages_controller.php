@@ -2,7 +2,9 @@
 class PagesController
 {
     public function home()
-    { $summarize_list = summarize::getAll();
+    { //echo "5555";
+        $summarize_list = summarize::getAll();
+        $fieldhospital_list = field_hospital::getsum($summarize_list) ;
         require_once("views/pages/home.php");
     }
     public function error()
