@@ -17,7 +17,7 @@ class summarize{
         //echo "55555";
         $summarize_list=[];
         require("connection_connect.php");
-        $sql ="SELECT field_hospital.FHName,ptfh.color_name,ptfh.จำนวนผู้ป่วย FROM (SELECT   Patientinfh.FHID ,Patient.color_name,COUNT(*) As จำนวนผู้ป่วย
+        $sql ="SELECT field_hospital.FHName,ptfh.color_name,ptfh.จำนวนผู้ป่วย FROM (SELECT Patientinfh.FHID ,Patient.color_name,COUNT(*) As จำนวนผู้ป่วย
         FROM Patient INNER JOIN Patientinfh ON Patient.patient_id = Patientinfh.patient_id
         GROUP BY Patientinfh.FHID , Patient.color_name) As ptfh NATURAL JOIN field_hospital" ;
         //$sql="SELECT * from field_hospital";
