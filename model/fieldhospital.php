@@ -120,4 +120,48 @@ class field_hospital{
         require("connection_close.php");
         return "delete success $result row";
     }
+    public static function getsum($summarize_list){
+        //echo "55555";
+        $fieldhospital_list=[];
+        require("connection_connect.php");
+        $sql ="SELECT field_hospital.FHID,field_hospital.FHName,field_hospital.FHaddress,field_hospital.FHdate,field_hospital.greenbed,field_hospital.yellowbed,field_hospital.redbed,agency.name as Agency
+        FROM field_hospital INNER JOIN agency ON agency.id=field_hospital.AID" ;
+        //$sql="SELECT * from field_hospital";
+        $result=$conn->query($sql);
+        //echo $result;
+        while($my_row=$result->fetch_assoc())
+        {
+            $FHID = $my_row[FHID];
+            $FHName = $my_row[FHName];
+            $FHaddress = $my_row[FHaddress];
+            $FHdate = $my_row[FHdate];
+            $greenbed =$my_row[greenbed];
+            $yellowbed = $my_row[yellowbed];
+            $redbed =$my_row[redbed];
+            $Agency = $my_row[Agency];
+            $fieldhospital_list[]= new field_hospital($FHID,$FHName,$FHaddress,$FHdate,$greenbed,$yellowbed,$redbed,$Agency);
+        }
+        foreach($fieldhospital_list as $fieldhospital){
+            
+            foreach($summarize_list as $summarize){
+                
+                if($fieldhospital->FHName == $summarize->field_hospital){
+                    /*echo $fieldhospital->FHName;
+                    echo $summarize->FHName ;*/
+
+                    if($summarize->color_name == "green"){
+                        $fieldhospital->greenbed = (int)$fieldhospital->greenbed - (int)$summarize->sumpatient ; 
+                    }
+                    if($summarize->color_name == "yellow"){
+                        $fieldhospital->yellowbed = (int)$fieldhospital->yellowbed - (int)$summarize->sumpatient ; 
+                    }
+                    if($summarize->color_name == "red"){
+                        $fieldhospital->redbed = (int)$fieldhospital->redbed - (int)$summarize->sumpatient ; 
+                    }
+               }
+        }
+    }
+        require("connection_close.php");
+        return $fieldhospital_list ;
+    }
 }?>
